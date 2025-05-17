@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8080/api/v1/event";
+const API_BASE_URL = "https://event-booking-service.onrender.com/api/v1/event";
 
 function getToken() {
     return localStorage.getItem("token") || "";

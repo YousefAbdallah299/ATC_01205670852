@@ -19,7 +19,7 @@ async function fetchBookings(pageNo = 0) {
     });
 
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/booking/all?${params.toString()}`, {
+        const response = await fetch(`https://event-booking-service.onrender.com/api/v1/booking/all?${params.toString()}`, {
             headers: {
                 'Authorization': `Bearer ${userToken}`,
                 'Content-Type': 'application/json'
@@ -93,7 +93,7 @@ async function cancelTicket(bookingId, button) {
     button.textContent = 'Cancelling...';
 
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/booking/cancel/${bookingId}`, {
+        const response = await fetch(`https://event-booking-service.onrender.com/api/v1/booking/cancel/${bookingId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${userToken}`,

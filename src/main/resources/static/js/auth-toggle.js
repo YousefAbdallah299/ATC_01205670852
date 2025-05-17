@@ -13,7 +13,7 @@ window.onload = () => {
 
     logoutBtn.addEventListener('click', () => {
         if (userToken) {
-            fetch('http://localhost:8080/api/v1/auth/logout', {
+            fetch('https://event-booking-service.onrender.com/api/v1/auth/logout', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + userToken,

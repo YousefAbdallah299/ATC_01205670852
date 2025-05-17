@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             try {
-                const response = await fetch("http://localhost:8080/api/v1/auth/logout", {
+                const response = await fetch("https://event-booking-service.onrender.com/api/v1/auth/logout", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

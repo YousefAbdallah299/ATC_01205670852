@@ -12,7 +12,7 @@ async function fetchBookedEvents() {
         return;
     }
     try {
-        const response = await fetch('http://localhost:8080/api/v1/booking/all?pageNo=0&pageSize=100', {
+        const response = await fetch('https://event-booking-service.onrender.com/api/v1/booking/all?pageNo=0&pageSize=100', {
             headers: {
                 'Authorization': `Bearer ${userToken}`,
                 'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ async function bookEvent(eventId, button) {
     button.disabled = true;
     button.textContent = "Booking...";
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/booking/book/${eventId}`, {
+        const response = await fetch(`https://event-booking-service.onrender.com/api/v1/booking/book/${eventId}`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${userToken}`,
@@ -73,7 +73,7 @@ async function fetchAndDisplayEvents(pageNo = 0) {
         sortBy: sortBy
     });
 
-    fetch(`http://localhost:8080/api/v1/event/all?${params.toString()}`)
+    fetch(`https://event-booking-service.onrender.com/api/v1/event/all?${params.toString()}`)
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             return response.json();

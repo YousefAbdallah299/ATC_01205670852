@@ -34,7 +34,7 @@ async function search() {
     document.getElementById('results').innerHTML = '';
 
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/event/name/${encodeURIComponent(title)}`);
+        const response = await fetch(`https://event-booking-service.onrender.com/api/v1/event/name/${encodeURIComponent(title)}`);
 
         if (!response.ok) {
             if (response.status === 404) {
@@ -65,7 +65,7 @@ async function bookTicket(eventId) {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/booking/book/${eventId}`, {
+        const response = await fetch(`https://event-booking-service.onrender.com/api/v1/booking/book/${eventId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
