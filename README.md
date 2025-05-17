@@ -3,6 +3,8 @@
 Welcome to the **Event Booking System**, an event booking platform designed to handle bookings, events, and more.
 To Access The Deployed Instance, Please Use This BaseUrl : [https://event-booking-service.onrender.comhttps://event-booking-service.onrender.com/Home_Page.html](https://event-booking-service.onrender.com/Home_Page.html)
 
+**NOTE:** ADMINS CAN'T REGISTER, TO TEST AND USE ADMIN ROLE CAPABILITES PLEASE LOG IN WITH THESE CREDENTIALS: E-mail: admin@gmail.com  Password: admin1234
+
 ## Overview
 - **User Profiles**: Manage user accounts.
 - **Booking Capabilities**: Execute bookings, or cancel them.
