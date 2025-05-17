@@ -1,7 +1,7 @@
 # Event Booking System
 
 Welcome to the **Event Booking System**, an event booking platform designed to handle bookings, events, and more.
-(To Access The Deployed Instance, Please Click Here : https://event-booking-service.onrender.com/Home_Page.html
+To Access The Deployed Backend Instance (Not FrontEnd), Please Use This BaseUrl : https://event-booking-service.onrender.com
 
 ## Overview
 - **User Profiles**: Manage user accounts.
