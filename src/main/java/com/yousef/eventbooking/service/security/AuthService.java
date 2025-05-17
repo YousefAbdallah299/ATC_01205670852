@@ -47,7 +47,7 @@ public interface AuthService {
      *
      * @param changePasswordDTO the new password of the user
      */
-    void changePassword(ChangePasswordDTO changePasswordDTO, String loggedInUserEmail) throws ResourceNotFoundException, SameAsOldPasswordException, InvalidOldPasswordException;
+    void changePassword(ChangePasswordDTO changePasswordDTO, String token) throws ResourceNotFoundException, SameAsOldPasswordException, InvalidOldPasswordException;
 
 
 }

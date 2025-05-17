@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Panel - Event Management</title>
+  <link rel="stylesheet" href="../css/admin-panel.css" />
+</head>
+<body>
+<h1>Admin Panel - Event Management</h1>
+
+<section id="create-event-section">
+  <h2>Create Event</h2>
+  <form id="create-event-form">
+    <label>Title: <input type="text" name="title" required /></label><br/>
+    <label>Description: <textarea name="description"></textarea></label><br/>
+    <label>Start Date: <input type="datetime-local" name="startDate" required /></label><br/>
+    <label>End Date: <input type="datetime-local" name="endDate" required /></label><br/>
+    <label>Category: <input type="text" name="categoryName" required /></label><br/>
+    <label>Total Tickets: <input type="number" name="totalTickets" min="1" required /></label><br/>
+    <label>Ticket Price: <input type="number" name="ticketPrice" min="0" step="0.01" required /></label><br/>
+    <label>Tags (comma separated): <input type="text" name="tags" required /></label><br/>
+    <label>Image URL: <input type="url" name="imageUrl" /></label><br/>
+    <label>Venue Name: <input type="text" name="venueName" required /></label><br/>
+    <button type="submit">Create Event</button>
+  </form>
+</section>
+
+<section id="update-event-section">
+  <h2>Update Event</h2>
+  <form id="update-event-form">
+    <label>Event ID (required): <input type="number" name="eventId" required /></label><br/>
+    <label>Title: <input type="text" name="title" /></label><br/>
+    <label>Description: <textarea name="description"></textarea></label><br/>
+    <label>Start Date: <input type="datetime-local" name="startDate" /></label><br/>
+    <label>End Date: <input type="datetime-local" name="endDate" /></label><br/>
+    <label>Category: <input type="text" name="categoryName" /></label><br/>
+    <label>Total Tickets: <input type="number" name="totalTickets" min="1" /></label><br/>
+    <label>Ticket Price: <input type="number" name="ticketPrice" min="0" step="0.01" /></label><br/>
+    <label>Tags (comma separated): <input type="text" name="tags" /></label><br/>
+    <label>Image URL: <input type="url" name="imageUrl" /></label><br/>
+    <label>Venue Name: <input type="text" name="venueName" /></label><br/>
+    <button type="submit">Update Event</button>
+  </form>
+</section>
+
+<section id="all-events-section">
+  <h2>All Events</h2>
+  <div id="events-list"></div>
+</section>
+
+<script src="../js/admin-panel.js"></script>
+</body>
+</html>

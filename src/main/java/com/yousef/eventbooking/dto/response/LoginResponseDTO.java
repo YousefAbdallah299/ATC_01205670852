@@ -1,6 +1,7 @@
 package com.yousef.eventbooking.dto.response;
 
 
+import com.yousef.eventbooking.dto.enums.UserRole;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 
@@ -14,4 +15,5 @@ public class LoginResponseDTO {
     private String tokenType;
     private String message;
     private HttpStatus httpStatus;
+    private UserRole role;
 }

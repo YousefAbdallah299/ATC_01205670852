@@ -1,11 +1,8 @@
 package com.yousef.eventbooking.dto.response;
 
 import lombok.*;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,14 +17,7 @@ public class RegisterResponseDTO {
 
     private String email;
 
-    private LocalDate dateOfBirth;
-
-    private String country;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
-
     private String phoneNumber;
+
 
 }

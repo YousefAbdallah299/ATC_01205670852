@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/extrnal/all.css" rel="stylesheet" />
+    <link href="css/extrnal/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet" />
+    <title>Event Booking Website</title>
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/normalize.css" rel="stylesheet" />
+</head>
+
+<body>
+<!-- nav bar  -->
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-calendar-days"></i>
+            <div class="name-page">HOME</div>
+        </div>
+
+        <div class="links">
+            <ul>
+                <li><a class="here" href="Home_Page.html">Home</a></li>
+                <li><a href="#all-events">Events</a></li>
+                <li><a href="#search-events">Search</a></li>
+                <li><a href="#view-bookings">Bookings</a></li>
+                <li><a href="#info">Info</a></li>
+            </ul>
+        </div>
+        <div class="sign-in">
+            <!-- Sign In button (shown when NOT logged in) -->
+            <button id="btn-signin" onclick="location.href='html/Sign_In.html'"
+                    style="padding: 6px 12px; background-color: #ffffff; color: #000000; border: none; border-radius: 4px; cursor: pointer;">
+                Sign In
+            </button>
+
+            <!-- Log Out button (hidden initially) -->
+            <button id="btn-logout" style="display:none; padding: 6px 12px; background-color: #ffffff; color: #000000; border: none; border-radius: 4px; cursor: pointer;">
+                Log Out
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- View All Events -->
+<div class="clear" id="all-events"></div>
+<section class="add-student">
+    <div class="container">
+        <div class="add-img">
+            <img src="images/events.jpg" alt="" />
+        </div>
+
+        <div class="add-text">
+            <h3>View All Events</h3>
+            <p>
+                Welcome to the Events section.<br />
+                This section allows you to view all available events <br />
+                happening through the platform.
+            </p>
+            <p>Press "View Events" to see the full list.</p>
+            <button class="btn" onclick="location.href='html/All_Events.html'">
+                <a href="html/All_Events.html">View Events</a>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Search Events -->
+<div class="clear" id="search-events"></div>
+<section class="search-activity">
+    <div class="container">
+        <div class="add-img">
+            <img src="images/search.png" alt="" />
+        </div>
+
+        <div class="add-text">
+            <h3>Search Events</h3>
+            <p>
+                Use this section to search for a specific event<br />
+                by name, date, or category.<br />
+                Find details about events that interest you.
+            </p>
+            <p>Press "Search" to start exploring events.</p>
+            <button class="btn" onclick="location.href='html/Search_Events.html'">
+                <a href="html/Search_Events.html">Search</a>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- View Bookings -->
+<div class="clear" id="view-bookings"></div>
+<section class="update-student">
+    <div class="container">
+        <div class="add-text">
+            <h3>View Bookings</h3>
+            <p>
+                Welcome to your Bookings section.<br />
+                This section lets you review all the events<br />
+                you have booked or registered for.
+            </p>
+            <p>Press "My Bookings" to check your reservations.</p>
+            <button class="btn" onclick="location.href='html/Bookings.html'">
+                <a href="html/Bookings.html">My Bookings</a>
+            </button>
+        </div>
+
+        <div class="add-img">
+            <img src="images/bookings.jpg" alt="" />
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div class="clear" id="info"></div>
+<footer class="Info">
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-calendar-days"></i>
+            <div class="name-page">Event Booking</div>
+            <br />
+        </div>
+    </div>
+</footer>
+
+<script src="js/auth-toggle.js"></script>
+</body>
+
+</html>

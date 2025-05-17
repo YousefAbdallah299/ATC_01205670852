@@ -25,7 +25,7 @@ public class JwtUtils {
 
     public String generateJwtToken(Authentication authentication) {
 
-        CustomerDetailsImpl userPrincipal = (CustomerDetailsImpl) authentication.getPrincipal();
+        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
@@ -49,6 +49,7 @@ public class JwtUtils {
         Claims claims = Jwts.parserBuilder().setSigningKey(key()).build().parseClaimsJws(token).getBody();
         return claims.get("userEmail",String.class);
     }
+
 
 
     public boolean validateJwtToken(String authToken) {

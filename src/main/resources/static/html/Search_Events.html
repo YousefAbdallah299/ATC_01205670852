@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Events</title>
+
+    <link href="../css/extrnal/all.css" rel="stylesheet" />
+    <link href="../css/extrnal/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet" />
+    <link href="../css/home.css" rel="stylesheet" />
+    <link href="../css/normalize.css" rel="stylesheet" />
+    <link href="../css/Search_Activity.css" rel="stylesheet" />
+</head>
+
+<body>
+<!-- nav bar -->
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div class="name-page">Search Events</div>
+        </div>
+        <div class="links">
+            <ul>
+                <li><a href="../Home_Page.html">Home</a></li>
+                <li><a href="Search_Events.html" class="here">Search</a></li>
+                <li><a href="All_Events.html">Events</a></li>
+                <li><a href="Bookings.html">Bookings</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h1>Search Events</h1>
+
+<div class="clear"></div>
+
+<div class="Search">
+    <form onsubmit="return false">
+        <h3>Search Form</h3>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required /><br /><br />
+        <button onclick="search()">Search</button>
+    </form>
+</div>
+
+<table class="ActiveEvents">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Category</th>
+        <th>Cover</th>
+        <th>Tags</th>
+        <th>Book</th>
+    </tr>
+    </thead>
+    <tbody id="results"></tbody>
+</table>
+
+<footer class="Info">
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div class="name-page">Event Booking</div>
+            <br />
+        </div>
+    </div>
+</footer>
+
+<script src="../js/Search_Activity.js"></script>
+</body>
+
+</html>

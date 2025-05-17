@@ -1,15 +1,16 @@
 package com.yousef.eventbooking.service.security;
+import com.yousef.eventbooking.dto.enums.UserRole;
 import com.yousef.eventbooking.dto.request.ChangePasswordDTO;
 import com.yousef.eventbooking.dto.request.LoginRequestDTO;
 import com.yousef.eventbooking.dto.request.RegisterRequestDTO;
 import com.yousef.eventbooking.dto.response.RegisterResponseDTO;
 import com.yousef.eventbooking.dto.response.LoginResponseDTO;
-import com.yousef.eventbooking.entity.Customer;
+import com.yousef.eventbooking.entity.User;
 import com.yousef.eventbooking.exception.custom.EmailAlreadyExistsException;
 import com.yousef.eventbooking.exception.custom.InvalidOldPasswordException;
 import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
 import com.yousef.eventbooking.exception.custom.SameAsOldPasswordException;
-import com.yousef.eventbooking.repository.CustomerRepository;
+import com.yousef.eventbooking.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,7 +27,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private final CustomerRepository customerRepository;
+    private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -39,34 +40,24 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public RegisterResponseDTO register(RegisterRequestDTO customerRequest) throws EmailAlreadyExistsException{
 
-        if(Boolean.TRUE.equals(customerRepository.existsByEmail(customerRequest.getEmail())))
+        if(Boolean.TRUE.equals(userRepository.existsByEmail(customerRequest.getEmail())))
             throw new EmailAlreadyExistsException("Email Already Exists!");
 
-        Customer customer = Customer.builder()
+        User user = User.builder()
                 .email(customerRequest.getEmail())
-                .password(this.passwordEncoder.encode(customerRequest.getPassword()))
-                .name(customerRequest.getName())
-                .dateOfBirth(customerRequest.getDateOfBirth())
-                .country(customerRequest.getCountry())
+                .passwordHash(this.passwordEncoder.encode(customerRequest.getPassword()))
+                .firstName(customerRequest.getFirst_name())
+                .lastName(customerRequest.getLast_name())
+                .role(customerRequest.getRole() != null ? customerRequest.getRole() : UserRole.USER)
                 .build();
 
-        if(customerRequest.getPhoneNumber() != null) customer.setPhoneNumber(customerRequest.getPhoneNumber());
+        if(customerRequest.getPhoneNumber() != null) user.setPhoneNumber(customerRequest.getPhoneNumber());
+        if(customerRequest.getRole() != null) user.setPhoneNumber(customerRequest.getPhoneNumber());
 
-//        Account account = Account.builder()
-//                .balance(0.0)
-//                .accountType(AccountType.SAVINGS)
-//                .accountDescription("Savings Account")
-//                .accountName(customerRequest.getName())
-//                .currency(AccountCurrency.EGP)
-//                .accountNumber(new SecureRandom().nextInt(1000000000) + "")
-//                .customer(customer)
-//                .build();
-//
-//        customer.getAccounts().add(account);
 
-        Customer savedCustomer = customerRepository.save(customer);
+        User savedUser = userRepository.save(user);
 
-        return savedCustomer.toResponse();
+        return savedUser.toRegisterResponseDTO();
     }
 
 
@@ -81,38 +72,49 @@ public class AuthServiceImpl implements AuthService {
 
         String jwt = jwtUtils.generateJwtToken(authentication);
 
+        jwtUtils.getEmailFromJwtToken(jwt);
+        User user = userRepository.findUserByEmail(jwtUtils.getEmailFromJwtToken(jwt))
+                .orElseThrow(() -> new RuntimeException("User Not Found with email: " + jwtUtils.getEmailFromJwtToken(jwt)));
+
+
         return LoginResponseDTO.builder()
                 .token(jwt)
                 .message("Login Success!")
                 .httpStatus(HttpStatus.ACCEPTED)
                 .tokenType("Bearer")
+                .role(user.getRole())
                 .build();
 
     }
 
     @Override
     public void logout(String token){
+        token = token.substring(7);
         invalidatedTokens.add(token);
     }
 
     @Override
-    public void changePassword(ChangePasswordDTO changePasswordDTO, String loggedInUserEmail) throws ResourceNotFoundException, SameAsOldPasswordException, InvalidOldPasswordException {
-        Customer customer =  customerRepository.findUserByEmail(loggedInUserEmail)
+    public void changePassword(ChangePasswordDTO changePasswordDTO, String token) throws ResourceNotFoundException, SameAsOldPasswordException, InvalidOldPasswordException {
+
+        token = token.substring(7);
+        String loggedInUserEmail = jwtUtils.getEmailFromJwtToken(token);
+
+        User user =  userRepository.findUserByEmail(loggedInUserEmail)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        if (passwordEncoder.matches(changePasswordDTO.getNewPassword(), customer.getPassword())) {
+        if (passwordEncoder.matches(changePasswordDTO.getNewPassword(), user.getPasswordHash())) {
             throw new SameAsOldPasswordException("New password is the same as the old one!");
         }
 
-        if (!passwordEncoder.matches(changePasswordDTO.getOldPassword(), customer.getPassword())) {
+        if (!passwordEncoder.matches(changePasswordDTO.getOldPassword(), user.getPasswordHash())) {
             throw new InvalidOldPasswordException("Old password is incorrect!");
         }
 
         String newPass = passwordEncoder.encode(changePasswordDTO.getNewPassword());
-        customer.setPassword(newPass);
+        user.setPasswordHash(newPass);
 
 
-        customerRepository.save(customer);
+        userRepository.save(user);
 
 
     }

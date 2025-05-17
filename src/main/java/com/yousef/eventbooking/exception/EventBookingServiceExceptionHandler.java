@@ -1,7 +1,6 @@
 package com.yousef.eventbooking.exception;
 
-import com.yousef.eventbooking.exception.custom.EmailAlreadyExistsException;
-import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
+import com.yousef.eventbooking.exception.custom.*;
 import com.yousef.eventbooking.exception.response.ErrorDetails;
 import com.yousef.eventbooking.exception.response.ValidationFailedResponse;
 import com.yousef.eventbooking.exception.response.ViolationErrors;
@@ -29,14 +28,26 @@ public class EventBookingServiceExceptionHandler {
         return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
-
-//IOException
-
-    @ExceptionHandler(IOException.class)
-    public ResponseEntity<Object> InsufficientFundsExceptionHandling(IOException exception, WebRequest request){
-        return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST),HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(InvalidInputException.class)
+    public ResponseEntity<Object> InvalidInputExceptionHandling(InvalidInputException exception, WebRequest request) {
+        return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
+
+    @ExceptionHandler(IOException.class)
+    public ResponseEntity<Object> ioExceptionHandling(IOException exception, WebRequest request) {
+        return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InsufficientTicketsException.class)
+    public ResponseEntity<Object> insufficientTicketsExceptionHandling(InsufficientTicketsException exception, WebRequest request) {
+        return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EventAlreadyBookedException.class)
+    public ResponseEntity<Object> eventAlreadyBookedExceptionHandling(EventAlreadyBookedException exception, WebRequest request) {
+        return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> runtimeExceptionHandling(MethodArgumentNotValidException exception){

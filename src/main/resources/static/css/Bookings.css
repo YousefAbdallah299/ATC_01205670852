@@ -1,0 +1,61 @@
+/* Bookings.css */
+/* Style cancel button similar to your theme */
+
+.cancel-btn {
+    padding: 8px 16px;
+    background-color: #e74c3c; /* red-ish for cancel */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover:not(:disabled) {
+    background-color: #c0392b;
+}
+
+.cancel-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Table styling can be adjusted or use your existing styles */
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.events-table th,
+.events-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.events-table th {
+    background-color: #f4f4f4;
+    font-weight: 700;
+}
+
+.booking-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+.booking-card h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.booking-card p {
+    margin: 4px 0;
+    font-size: 15px;
+}

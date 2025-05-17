@@ -30,12 +30,10 @@ public class AuthController {
 
     private final AuthService authService;
 
-    private final JwtUtils jwtUtils;
-
-    @GetMapping("/refresh")
-    public ResponseEntity<Void> refresh() {
-        return ResponseEntity.ok().build();
-    }
+//    @GetMapping("/refresh")
+//    public ResponseEntity<Void> refresh() {
+//        return ResponseEntity.ok().build();
+//    }
 
 
     @PostMapping("/register")
@@ -53,7 +51,6 @@ public class AuthController {
     @PostMapping("/logout")
     @Operation(summary = "Logout the user", description = "Invalidates the JWT token for the currently logged-in customer, logging them out of the system.")
     public ResponseEntity<Void> logout(@RequestHeader("Authorization") String token) {
-        token = token.substring(7);
         authService.logout(token);
         return ResponseEntity.ok().build();
     }
@@ -62,10 +59,8 @@ public class AuthController {
     @Operation(summary = "Change user password", description = "Changes the current user password to a new one.")
 
     public ResponseEntity<Void> changePassword(@RequestHeader("Authorization") String token, @RequestBody @Valid ChangePasswordDTO changePasswordDTO) throws SameAsOldPasswordException, ResourceNotFoundException, InvalidOldPasswordException {
-        token = token.substring(7);
-        String loggedInUserEmail = jwtUtils.getEmailFromJwtToken(token);
 
-        authService.changePassword(changePasswordDTO,loggedInUserEmail);
+        authService.changePassword(changePasswordDTO, token);
 
         return ResponseEntity.ok().build();
     }

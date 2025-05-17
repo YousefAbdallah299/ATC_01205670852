@@ -1,0 +1,50 @@
+/* Center container vertically and horizontally */
+.container {
+    min-height: 80vh; /* Adjust to fill most of the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical center */
+    align-items: center;     /* horizontal center */
+    text-align: center;
+    gap: 1rem; /* spacing between elements */
+}
+
+/* Style the heading */
+.container h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 3rem;
+    color: #444444; /* nice green color */
+    margin-bottom: 0;
+}
+
+/* Cute paragraph style */
+.container p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25rem;
+    color: #555;
+    max-width: 400px;
+    line-height: 1.6;
+    font-style: italic;
+    background-color: #e8f5e9;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Button style */
+.button {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #444444;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.button:hover {
+    background-color: #444444;
+}

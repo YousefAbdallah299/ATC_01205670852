@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/extrnal/all.css" rel="stylesheet" />
+    <link href="../css/extrnal/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet" />
+    <link href="../css/home.css" rel="stylesheet">
+    <link href="../css/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Sign_in.css" />
+
+    <title>Register</title>
+</head>
+
+<body>
+<!-- nav bar  -->
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div class="name-page">Register</div>
+        </div>
+        <div class="links">
+            <ul>
+                <li><a href="../Home_Page.html">Home</a></li>
+                <li><a href="Search_Events.html">Search</a></li>
+                <li><a href="All_Events.html">Events</a></li>
+                <li><a href="Bookings.html">Bookings</a></li>
+            </ul>
+        </div>
+        <div class="sign-in" style="display: flex; gap: 8px;">
+            <button onclick="location.href='Sign_In.html'" style="padding: 6px 12px; background-color: #ffffff; color: #000000; border: none; border-radius: 4px; cursor: pointer;">Sign In</button>
+            <button onclick="location.href='Register.html'" style="padding: 6px 12px; background-color: #ffffff; color: #000000; border: none; border-radius: 4px; cursor: pointer;">Register</button>
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>
+<div class="AddForm">
+    <form id="registerForm">
+        <h3>Register</h3>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required /><br /><br />
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required /><br /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" minlength="8" required /><br /><br />
+
+        <label for="phoneNumber">Phone Number (optional):</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" /><br /><br />
+
+        <button type="submit" id="sub">Register</button>
+        <input type="reset" value="Reset" />
+    </form>
+</div>
+
+<div class="clear" id="Info"></div>
+<footer class="Info">
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div class="name-page">Event Booking</div>
+            <br />
+        </div>
+    </div>
+</footer>
+
+<script src="../js/register.js"></script>
+
+</body>
+</html>
