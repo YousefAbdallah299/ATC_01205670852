@@ -1,23 +1,20 @@
-/* Center container vertically and horizontally */
 .container {
-    min-height: 80vh; /* Adjust to fill most of the viewport height */
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertical center */
-    align-items: center;     /* horizontal center */
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    gap: 1rem; /* spacing between elements */
+    gap: 1rem;
 }
 
-/* Style the heading */
 .container h1 {
     font-family: 'Roboto Slab', serif;
     font-size: 3rem;
-    color: #444444; /* nice green color */
+    color: #444444;
     margin-bottom: 0;
 }
 
-/* Cute paragraph style */
 .container p {
     font-family: 'Lato', sans-serif;
     font-size: 1.25rem;
@@ -31,7 +28,6 @@
     box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
 }
 
-/* Button style */
 .button {
     display: inline-block;
     padding: 12px 28px;

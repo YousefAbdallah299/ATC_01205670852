@@ -1,7 +1,6 @@
 package com.yousef.eventbooking.dto.response;
 
 import lombok.*;
-import java.time.LocalDateTime;
 
 
 @AllArgsConstructor

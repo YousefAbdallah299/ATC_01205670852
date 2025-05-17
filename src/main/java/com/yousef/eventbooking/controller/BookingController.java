@@ -2,7 +2,6 @@ package com.yousef.eventbooking.controller;
 
 import com.yousef.eventbooking.dto.response.BookingPageResponseDTO;
 import com.yousef.eventbooking.dto.response.BookingResponseDTO;
-import com.yousef.eventbooking.exception.custom.EventAlreadyBookedException;
 import com.yousef.eventbooking.exception.custom.InsufficientTicketsException;
 import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
 import com.yousef.eventbooking.exception.custom.UnauthorizedAccessException;
@@ -14,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/booking")
@@ -39,7 +36,7 @@ public class BookingController {
 
     @PostMapping("/book/{eventId}")
     @Operation(summary = "Book a ticket", description = "Allows the user to book a ticket for an event.")
-    public ResponseEntity<BookingResponseDTO> bookTicket(@PathVariable Long eventId, @RequestHeader("Authorization") String token) throws ResourceNotFoundException, InsufficientTicketsException, EventAlreadyBookedException {
+    public ResponseEntity<BookingResponseDTO> bookTicket(@PathVariable Long eventId, @RequestHeader("Authorization") String token) throws ResourceNotFoundException, InsufficientTicketsException {
         BookingResponseDTO bookingResponse = bookingService.bookTicket(eventId, token);
         return new ResponseEntity<>(bookingResponse, HttpStatus.CREATED);
     }

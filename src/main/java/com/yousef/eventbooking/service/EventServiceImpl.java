@@ -3,7 +3,6 @@ package com.yousef.eventbooking.service;
 import com.yousef.eventbooking.dto.enums.EventStatus;
 import com.yousef.eventbooking.dto.enums.UserRole;
 import com.yousef.eventbooking.dto.request.CreateEventRequestDTO;
-import com.yousef.eventbooking.dto.request.EventFilterRequestDTO;
 import com.yousef.eventbooking.dto.request.UpdateEventRequestDTO;
 import com.yousef.eventbooking.dto.response.EventPageResponseDTO;
 import com.yousef.eventbooking.dto.response.EventResponseDTO;
@@ -22,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -70,42 +68,6 @@ public class EventServiceImpl implements EventService {
     }
 
 
-
-
-    @Override
-    public EventPageResponseDTO getFilteredEvents(EventFilterRequestDTO filters, Integer pageNo, Integer pageSize, String sortBy) throws ResourceNotFoundException {
-
-        Sort sort = Sort.by(Sort.Direction.ASC, sortBy);
-        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
-
-        EventCategory category = eventCategoryRepository.findByName(filters.getCategory())
-                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
-
-        Venue venue = venueRepository.findByName(filters.getVenueName())
-                .orElseThrow(() -> new ResourceNotFoundException("Venue not found"));
-
-        Page<Event> eventPage =  eventRepository.findEventWithFilters(filters.getName(), venue.getId(), filters.getStartDate(), filters.getEndDate(), category.getCategory_id(),filters.getTag(),pageable);
-
-
-        boolean isLast = pageNo >= eventPage.getTotalPages() - 1;
-
-
-        if (eventPage.isEmpty()) {
-            throw new ResourceNotFoundException("No events found");
-        }
-
-        return EventPageResponseDTO.builder()
-                .events(eventPage.getContent().stream()
-                        .map(Event::toResponseDTO)
-                        .toList())
-                .totalPages(eventPage.getTotalPages())
-                .pageNumber(eventPage.getNumber())
-                .pageSize(eventPage.getSize())
-                .totalElement(eventPage.getTotalElements())
-                .isLast(isLast)
-                .build();
-
-    }
 
     @Override
     @Transactional

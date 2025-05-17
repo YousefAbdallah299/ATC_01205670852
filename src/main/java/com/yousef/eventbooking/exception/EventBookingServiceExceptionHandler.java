@@ -44,10 +44,6 @@ public class EventBookingServiceExceptionHandler {
         return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(EventAlreadyBookedException.class)
-    public ResponseEntity<Object> eventAlreadyBookedExceptionHandling(EventAlreadyBookedException exception, WebRequest request) {
-        return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), exception.getMessage(), request.getDescription(false), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
-    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> runtimeExceptionHandling(MethodArgumentNotValidException exception){

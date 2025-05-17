@@ -2,7 +2,6 @@ package com.yousef.eventbooking.controller;
 
 
 import com.yousef.eventbooking.dto.request.CreateEventRequestDTO;
-import com.yousef.eventbooking.dto.request.EventFilterRequestDTO;
 import com.yousef.eventbooking.dto.request.UpdateEventRequestDTO;
 import com.yousef.eventbooking.dto.response.EventPageResponseDTO;
 import com.yousef.eventbooking.dto.response.EventResponseDTO;
@@ -19,7 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/event")
@@ -57,17 +55,6 @@ public class EventController {
     public ResponseEntity<EventResponseDTO> findEventByTitle(@PathVariable String title) throws ResourceNotFoundException {
         EventResponseDTO event = eventService.findEventByTitle(title);
         return new ResponseEntity<>(event, HttpStatus.OK);
-    }
-
-
-    @GetMapping("/all/filter")
-    @Operation(summary = "Get events based on filters", description = "Retrieves the list of events found based on the given filters.")
-    public ResponseEntity<EventPageResponseDTO> getFilteredEvents(@RequestBody EventFilterRequestDTO filters,
-                                                                    @RequestParam(defaultValue = "0") Integer pageNo,
-                                                                    @RequestParam(defaultValue = "5") Integer pageSize,
-                                                                    @RequestParam(defaultValue = "id") String sortBy) throws UnauthorizedAccessException, ResourceNotFoundException {
-        EventPageResponseDTO events = eventService.getFilteredEvents(filters, pageNo, pageSize, sortBy);
-        return new ResponseEntity<>(events, HttpStatus.OK);
     }
 
     @PostMapping("/add")

@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 alert("Logged out successfully!");
 
-                // Clean up
                 localStorage.removeItem("token");
                 localStorage.removeItem("tokenExpiry");
 

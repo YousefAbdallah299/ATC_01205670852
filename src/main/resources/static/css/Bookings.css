@@ -1,9 +1,6 @@
-/* Bookings.css */
-/* Style cancel button similar to your theme */
-
 .cancel-btn {
     padding: 8px 16px;
-    background-color: #e74c3c; /* red-ish for cancel */
+    background-color: #e74c3c;
     color: white;
     border: none;
     border-radius: 5px;
@@ -20,8 +17,6 @@
     background-color: #ccc;
     cursor: not-allowed;
 }
-
-/* Table styling can be adjusted or use your existing styles */
 .events-table {
     width: 100%;
     border-collapse: collapse;

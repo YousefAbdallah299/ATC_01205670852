@@ -1,20 +1,15 @@
 package com.yousef.eventbooking.service;
 
 import com.yousef.eventbooking.dto.request.CreateEventRequestDTO;
-import com.yousef.eventbooking.dto.request.EventFilterRequestDTO;
 import com.yousef.eventbooking.dto.request.UpdateEventRequestDTO;
 import com.yousef.eventbooking.dto.response.EventPageResponseDTO;
 import com.yousef.eventbooking.dto.response.EventResponseDTO;
-import com.yousef.eventbooking.entity.Event;
 import com.yousef.eventbooking.exception.custom.InvalidInputException;
-import com.yousef.eventbooking.exception.custom.InvalidOldPasswordException;
 import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
 import com.yousef.eventbooking.exception.custom.UnauthorizedAccessException;
 import jakarta.validation.Valid;
-import org.hibernate.sql.Update;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 
 public interface EventService {
@@ -30,20 +25,6 @@ public interface EventService {
      */
     EventPageResponseDTO getAllEvents(Integer pageNo, Integer pageSize, String sortBy) throws ResourceNotFoundException;
 
-
-
-
-    /**
-     * Retrieves events from the database based on the provided filters.
-     *
-     * @param filters  the filters to apply
-     * @param pageNo   the page number to retrieve
-     * @param pageSize the number of events per page
-     * @param sortBy   the field to sort by
-     * @return a list of EventResponseDTO objects representing the filtered events
-     * @throws ResourceNotFoundException if no events are found
-     */
-    EventPageResponseDTO getFilteredEvents(EventFilterRequestDTO filters, Integer pageNo, Integer pageSize, String sortBy) throws ResourceNotFoundException;
 
     /**
      * Adds a new event to the database.

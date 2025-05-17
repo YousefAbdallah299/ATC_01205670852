@@ -40,7 +40,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(e -> e.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**","/actuator/**","/h2-console/**","/api/v1/event/all","/api/v1/event/all/filter","/api/v1/event/{eventId}", "/api/v1/event/name/{title}",
+                        .requestMatchers("/api/v1/auth/**","/actuator/**","/h2-console/**","/api/v1/event/all","/api/v1/event/all/filter","/api/v1/event/{eventId}", "/api/v1/event/name/{title}","/api/v1/auth/refresh",
                                 "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**","/","/Home_Page.html",
                                 "/css/**",
                                 "/js/**",

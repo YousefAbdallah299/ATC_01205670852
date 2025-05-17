@@ -1,14 +1,9 @@
 package com.yousef.eventbooking.controller;
-
-import com.yousef.eventbooking.dto.request.ChangePasswordDTO;
 import com.yousef.eventbooking.dto.request.LoginRequestDTO;
 import com.yousef.eventbooking.dto.request.RegisterRequestDTO;
 import com.yousef.eventbooking.dto.response.LoginResponseDTO;
 import com.yousef.eventbooking.dto.response.RegisterResponseDTO;
 import com.yousef.eventbooking.exception.custom.EmailAlreadyExistsException;
-import com.yousef.eventbooking.exception.custom.InvalidOldPasswordException;
-import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
-import com.yousef.eventbooking.exception.custom.SameAsOldPasswordException;
 import com.yousef.eventbooking.service.security.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -52,16 +47,6 @@ public class AuthController {
     @Operation(summary = "Logout the user", description = "Invalidates the JWT token for the currently logged-in customer, logging them out of the system.")
     public ResponseEntity<Void> logout(@RequestHeader("Authorization") String token) {
         authService.logout(token);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("change-password")
-    @Operation(summary = "Change user password", description = "Changes the current user password to a new one.")
-
-    public ResponseEntity<Void> changePassword(@RequestHeader("Authorization") String token, @RequestBody @Valid ChangePasswordDTO changePasswordDTO) throws SameAsOldPasswordException, ResourceNotFoundException, InvalidOldPasswordException {
-
-        authService.changePassword(changePasswordDTO, token);
-
         return ResponseEntity.ok().build();
     }
 

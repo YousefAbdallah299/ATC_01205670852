@@ -2,13 +2,9 @@ package com.yousef.eventbooking.dto.response;
 
 
 import com.yousef.eventbooking.dto.enums.EventStatus;
-import com.yousef.eventbooking.entity.EventCategory;
-import com.yousef.eventbooking.entity.EventTag;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 @Setter

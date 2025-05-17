@@ -82,7 +82,6 @@ async function fetchBookings(pageNo = 0) {
     }
 }
 
-// Cancel booking by bookingId (not eventId)
 async function cancelTicket(bookingId, button) {
     if (!userToken) {
         alert('Please sign in to cancel bookings.');

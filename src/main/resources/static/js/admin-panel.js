@@ -142,7 +142,6 @@ document.getElementById('update-event-form').addEventListener('submit', async (e
         alert("Event ID must be a number.");
         return;
     }
-    // Only include fields that have non-empty values
     const body = {};
     if (form.title.value.trim() !== "") body.title = form.title.value.trim();
     if (form.description.value.trim() !== "") body.description = form.description.value.trim();

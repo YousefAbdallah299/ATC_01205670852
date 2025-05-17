@@ -1,13 +1,11 @@
 package com.yousef.eventbooking.service;
 
 import com.yousef.eventbooking.dto.enums.EventStatus;
-import com.yousef.eventbooking.dto.enums.UserRole;
 import com.yousef.eventbooking.dto.response.BookingPageResponseDTO;
 import com.yousef.eventbooking.dto.response.BookingResponseDTO;
 import com.yousef.eventbooking.entity.Booking;
 import com.yousef.eventbooking.entity.Event;
 import com.yousef.eventbooking.entity.User;
-import com.yousef.eventbooking.exception.custom.EventAlreadyBookedException;
 import com.yousef.eventbooking.exception.custom.InsufficientTicketsException;
 import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
 import com.yousef.eventbooking.exception.custom.UnauthorizedAccessException;
@@ -24,7 +22,6 @@ import com.yousef.eventbooking.repository.BookingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Service

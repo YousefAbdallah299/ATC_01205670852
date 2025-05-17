@@ -2,7 +2,6 @@ package com.yousef.eventbooking.dto.response;
 
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Setter

@@ -1,11 +1,5 @@
 package com.yousef.eventbooking.dto.request;
-
-
-import com.yousef.eventbooking.dto.enums.EventStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -14,6 +8,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UpdateEventRequestDTO {
     private String title;
     private String description;

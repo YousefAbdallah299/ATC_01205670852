@@ -57,7 +57,7 @@ async function search() {
 }
 
 async function bookTicket(eventId) {
-    const token = localStorage.getItem('token'); // adjust based on your token storage
+    const token = localStorage.getItem('token');
 
     if (!token) {
         alert('You must be logged in to book tickets.');

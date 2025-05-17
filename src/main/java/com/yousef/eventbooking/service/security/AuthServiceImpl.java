@@ -1,15 +1,11 @@
 package com.yousef.eventbooking.service.security;
 import com.yousef.eventbooking.dto.enums.UserRole;
-import com.yousef.eventbooking.dto.request.ChangePasswordDTO;
 import com.yousef.eventbooking.dto.request.LoginRequestDTO;
 import com.yousef.eventbooking.dto.request.RegisterRequestDTO;
 import com.yousef.eventbooking.dto.response.RegisterResponseDTO;
 import com.yousef.eventbooking.dto.response.LoginResponseDTO;
 import com.yousef.eventbooking.entity.User;
 import com.yousef.eventbooking.exception.custom.EmailAlreadyExistsException;
-import com.yousef.eventbooking.exception.custom.InvalidOldPasswordException;
-import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
-import com.yousef.eventbooking.exception.custom.SameAsOldPasswordException;
 import com.yousef.eventbooking.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -93,31 +89,6 @@ public class AuthServiceImpl implements AuthService {
         invalidatedTokens.add(token);
     }
 
-    @Override
-    public void changePassword(ChangePasswordDTO changePasswordDTO, String token) throws ResourceNotFoundException, SameAsOldPasswordException, InvalidOldPasswordException {
-
-        token = token.substring(7);
-        String loggedInUserEmail = jwtUtils.getEmailFromJwtToken(token);
-
-        User user =  userRepository.findUserByEmail(loggedInUserEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-
-        if (passwordEncoder.matches(changePasswordDTO.getNewPassword(), user.getPasswordHash())) {
-            throw new SameAsOldPasswordException("New password is the same as the old one!");
-        }
-
-        if (!passwordEncoder.matches(changePasswordDTO.getOldPassword(), user.getPasswordHash())) {
-            throw new InvalidOldPasswordException("Old password is incorrect!");
-        }
-
-        String newPass = passwordEncoder.encode(changePasswordDTO.getNewPassword());
-        user.setPasswordHash(newPass);
-
-
-        userRepository.save(user);
-
-
-    }
 
     public boolean isTokenInvalid(String token){
         return invalidatedTokens.contains(token);

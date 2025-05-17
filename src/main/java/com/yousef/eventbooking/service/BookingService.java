@@ -2,12 +2,10 @@ package com.yousef.eventbooking.service;
 
 import com.yousef.eventbooking.dto.response.BookingPageResponseDTO;
 import com.yousef.eventbooking.dto.response.BookingResponseDTO;
-import com.yousef.eventbooking.exception.custom.EventAlreadyBookedException;
 import com.yousef.eventbooking.exception.custom.InsufficientTicketsException;
 import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
 import com.yousef.eventbooking.exception.custom.UnauthorizedAccessException;
 
-import java.util.List;
 
 public interface BookingService {
     /**
@@ -17,7 +15,7 @@ public interface BookingService {
      * @param token   the JWT token of the user making the request
      * @return a message indicating the success of the booking
      */
-    BookingResponseDTO bookTicket(Long eventId, String token) throws ResourceNotFoundException, InsufficientTicketsException, EventAlreadyBookedException;
+    BookingResponseDTO bookTicket(Long eventId, String token) throws ResourceNotFoundException, InsufficientTicketsException;
 
     /**
      * Cancels a booked ticket for an event.
