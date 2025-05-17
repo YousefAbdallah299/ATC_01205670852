@@ -10,7 +10,6 @@ import com.yousef.eventbooking.exception.custom.InvalidOldPasswordException;
 import com.yousef.eventbooking.exception.custom.ResourceNotFoundException;
 import com.yousef.eventbooking.exception.custom.SameAsOldPasswordException;
 import com.yousef.eventbooking.service.security.AuthService;
-import com.yousef.eventbooking.service.security.JwtUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -30,10 +29,11 @@ public class AuthController {
 
     private final AuthService authService;
 
-//    @GetMapping("/refresh")
-//    public ResponseEntity<Void> refresh() {
-//        return ResponseEntity.ok().build();
-//    }
+    //THIS IS ONLY FOR KEEPING THE SESSION ALIVE IN RENDER, PLEASE IGNORE IT
+    @GetMapping("/refresh")
+    public ResponseEntity<Void> refresh() {
+        return ResponseEntity.ok().build();
+    }
 
 
     @PostMapping("/register")
